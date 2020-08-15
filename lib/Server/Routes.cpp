@@ -65,7 +65,22 @@
 
         }
         else if (eventType == "transfer") {
-            return crow::response(404, std::to_string(0));
+            std::string origin = (body["origin"]).s();
+            std::string destination = (body["destination"]).s();
+            std::string updatedBalanceOrigin, updatedBalanceDestination;
+            auto accountFound = transactionHandler.Transfer(origin, destination, amount, updatedBalanceOrigin, updatedBalanceDestination);
+            if (!accountFound) {
+                return crow::response(404, std::to_string(0));
+            }
+            else {
+                std::string jsonResponse = std::string("{\"origin\": {\"id\":") +
+                                           origin + "\"" +
+                                           ", \"balance\":" +
+                                            updatedBalanceOrigin + "},\"destination\":{\"id\":\"" +
+                                            destination + "\", \"balance\":" +
+                                            updatedBalanceDestination + "}}";
+                return crow::response(201, jsonResponse);
+            }
         }
 
         return crow::response(404, std::to_string(0));
