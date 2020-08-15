@@ -12,6 +12,8 @@ private:
     crow::SimpleApp &localApp;
     Transactions transactionHandler;
     crow::response BalanceRoute(const crow::request& req);
+    crow::response EventRoute(const crow::request& req);
+    crow::response ResetRoute();
 };
 
 #endif	/* ROUTES_H */

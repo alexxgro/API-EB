@@ -14,3 +14,7 @@ std::string DataStorage::GetBalance(const std::string& accountId){
     }
 }
 
+void DataStorage::ResetAccounts() {
+    accounts.clear();
+}
+

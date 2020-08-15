@@ -9,6 +9,7 @@ public:
     Transactions(DataStorage dataStorage);
 
     std::string GetBalance(const std::string& account_id);
+    void ResetAccounts();
 
 private:
     DataStorage dataStorage;

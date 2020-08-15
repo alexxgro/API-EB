@@ -11,6 +11,7 @@
 
         float AlterBalance(const std::string& userId);
         std::string GetBalance(const std::string& userId);
+        void ResetAccounts();
 
     private:
         std::map<std::string, float> accounts;
