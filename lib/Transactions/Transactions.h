@@ -8,6 +8,8 @@ class Transactions {
 public:
     Transactions(DataStorage dataStorage);
 
+    std::string GetBalance(const std::string& account_id);
+
 private:
     DataStorage dataStorage;
 };

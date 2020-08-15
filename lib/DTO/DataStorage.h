@@ -9,9 +9,8 @@
     public:
         DataStorage() = default;
 
-    private:
         float AlterBalance(const std::string& userId);
-        float GetBalance(const std::string& userId);
+        std::string GetBalance(const std::string& userId);
 
     private:
         std::map<std::string, float> accounts;

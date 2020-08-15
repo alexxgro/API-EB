@@ -11,7 +11,7 @@ public:
 private:
     crow::SimpleApp &localApp;
     Transactions transactionHandler;
-    std::string BalanceRoute();
+    crow::response BalanceRoute(const crow::request& req);
 };
 
 #endif	/* ROUTES_H */
