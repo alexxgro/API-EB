@@ -46,7 +46,9 @@
         if (eventType == "deposit") {
             std::string destination = (body["destination"]).s();
             auto newBalance = transactionHandler.AddToBalanceOrCreateAccount(destination, amount);
-            std::string jsonResponse = std::string("{\"destination\": {\"id\":\"") + destination + "\", \"balance\":" + newBalance + "}}";
+            std::string jsonResponse = std::string("{\"destination\": {\"id\":\"") +
+                                        destination + "\", \"balance\":" +
+                                        newBalance + "}}";
             return crow::response(201, jsonResponse);
         }
         else if (eventType == "withdraw") {
