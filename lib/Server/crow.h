@@ -1,3 +1,6 @@
+#ifndef CROW_H
+#define	CROW_H
+
 #pragma once
 #include "crow/query_string.h"
 #include "crow/http_parser_merged.h"
@@ -21,3 +24,5 @@
 #include "crow/http_connection.h"
 #include "crow/http_server.h"
 #include "crow/app.h"
+
+#endif	/* CROW_H */
