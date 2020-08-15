@@ -1,0 +1,12 @@
+This is a very raw program, as explicitly requested.
+
+- cleanup make files, they are not tidy yet.
+- configuration file
+- unit tests
+- declare static value s(return codes, etc) instead of using them hard coded
+- split Routes.cpp EventRoute into smaller methods
+- ? truncate zeroes from returned values ?
+- use a Json Formatter instead of hand formatting the Json
+- add defensive coding, a lot of scenarios aren't protected
+- create custom namespace around classes
+- use c++17 and std::optional for some return values
