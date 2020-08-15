@@ -1,7 +1,10 @@
 #include "Routes.h"
 
 
-    Routes::Routes(crow::SimpleApp &app) : localApp(app){
+    Routes::Routes(crow::SimpleApp &app, Transactions transactionHandler) :
+                localApp(app),
+                transactionHandler(std::move(transactionHandler)) {
+
             CROW_ROUTE(localApp, "/balance")([&](){
                 return BalanceRoute();
             });

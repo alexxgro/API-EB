@@ -16,7 +16,7 @@ set(SRCAPI_Headers
 
 set(SRCAPI_Sources
         ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp
-        ../lib/Server/Routes.h ../lib/Server/Routes.cpp ../lib/DTO/DataStorage.h ../lib/DTO/DataStorage.cpp)
+        ../lib/Server/Routes.h ../lib/Server/Routes.cpp ../lib/DTO/DataStorage.h ../lib/DTO/DataStorage.cpp ../lib/Transactions/Transactions.cpp ../lib/Transactions/Transactions.h)
 
 add_executable(srcAPI
         ${SRCAPI_Sources}
