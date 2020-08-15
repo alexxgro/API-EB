@@ -41,7 +41,7 @@ bool Transactions::Transfer(const std::string& origin,
 }
 
 bool Transactions::WithdrawFromAccount(const std::string& accountId, float amount, std::string& updatedBalance) {
-    if (dataStorage.CheckAccountExists(accountId)) {
+    if (!dataStorage.CheckAccountExists(accountId)) {
         updatedBalance = std::string("0");
         return false;
     }

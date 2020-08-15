@@ -41,11 +41,13 @@
         }
 
         std::string eventType = (body["type"]).s();
-        float amount = std::stof((body["amount"]).s());
+        float amount = (body["amount"]).d();
 
         if (eventType == "deposit") {
-            auto newBalance = transactionHandler.AddToBalanceOrCreateAccount((body["destination"]).s(), amount);
-            return crow::response(201, newBalance);
+            std::string destination = (body["destination"]).s();
+            auto newBalance = transactionHandler.AddToBalanceOrCreateAccount(destination, amount);
+            std::string jsonResponse = std::string("{\"destination\": {\"id\":\"") + destination + "\", \"balance\":" + newBalance + "}}";
+            return crow::response(201, jsonResponse);
         }
         else if (eventType == "withdraw") {
             std::string updatedBalance;
@@ -55,8 +57,8 @@
                 return crow::response(404, std::to_string(0));
             }
             else {
-                std::string jsonResponse = std::string("{\"destination\": {\"id\":") +
-                                            origin + "\"" +
+                std::string jsonResponse = std::string("{\"origin\": {\"id\":") +
+                                            "\"" + origin + "\"" +
                                             ", \"balance\":" +
                                             updatedBalance + "}}";
 
@@ -74,7 +76,7 @@
             }
             else {
                 std::string jsonResponse = std::string("{\"origin\": {\"id\":") +
-                                           origin + "\"" +
+                                           "\"" + origin + "\"" +
                                            ", \"balance\":" +
                                             updatedBalanceOrigin + "},\"destination\":{\"id\":\"" +
                                             destination + "\", \"balance\":" +

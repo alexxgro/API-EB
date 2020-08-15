@@ -11,7 +11,7 @@ std::string DataStorage::AddBalance(const std::string &accountId, float amount) 
 
 bool DataStorage::CheckAccountExists(const std::string& accountId) {
     auto it = accounts.find(accountId);
-    if (it != accounts.end())
+    if (it == accounts.end())
         return false;
     else
         return true;
