@@ -8,8 +8,10 @@ class Transactions {
 public:
     Transactions(DataStorage dataStorage);
 
-    std::string GetBalance(const std::string& account_id);
+    std::string AddToBalanceOrCreateAccount(const std::string& accountId, float amount);
+    std::string GetBalance(const std::string& accountId);
     void ResetAccounts();
+    bool WithdrawFromAccount(const std::string& accountId, float amount, std::string& updatedBalance);
 
 private:
     DataStorage dataStorage;

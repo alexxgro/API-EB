@@ -1,10 +1,29 @@
 #include "DataStorage.h"
 
-float DataStorage::AlterBalance(const std::string& accountId){
-    return 0;
+std::string DataStorage::AddBalance(const std::string &accountId, float amount) {
+    auto currentAccount = accounts.find(accountId);
+    float newBalance = currentAccount->second + amount;
+
+    accounts[currentAccount->first] = newBalance;
+
+    return std::to_string(newBalance);
 }
 
-std::string DataStorage::GetBalance(const std::string& accountId){
+bool DataStorage::CheckAccountExists(const std::string& accountId) {
+    auto it = accounts.find(accountId);
+    if (it != accounts.end())
+        return false;
+    else
+        return true;
+}
+
+std::string DataStorage::CreateAccount(const std::string& accountId, float amount) {
+    accounts.insert(std::pair<std::string, float>(accountId, amount));
+
+    return std::to_string(amount);
+}
+
+std::string DataStorage::GetBalance(const std::string& accountId) {
     auto it = accounts.find(accountId);
     if (it != accounts.end()) {
         return std::to_string(it->second);
@@ -16,5 +35,14 @@ std::string DataStorage::GetBalance(const std::string& accountId){
 
 void DataStorage::ResetAccounts() {
     accounts.clear();
+}
+
+std::string DataStorage::WithdrawFromAccount(const std::string& accountId, float amount) {
+    auto currentAccount = accounts.find(accountId);
+    float newBalance = currentAccount->second - amount;
+
+    accounts[currentAccount->first] = newBalance;
+
+    return std::to_string(newBalance);
 }
 

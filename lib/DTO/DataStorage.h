@@ -9,9 +9,12 @@
     public:
         DataStorage() = default;
 
-        float AlterBalance(const std::string& userId);
-        std::string GetBalance(const std::string& userId);
+        std::string AddBalance(const std::string& accountId, float amount);
+        bool CheckAccountExists(const std::string& accountId);
+        std::string CreateAccount(const std::string& accountId, float amount);
+        std::string GetBalance(const std::string& accountId);
         void ResetAccounts();
+        std::string WithdrawFromAccount(const std::string& accountId, float amount);
 
     private:
         std::map<std::string, float> accounts;
